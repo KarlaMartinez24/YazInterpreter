@@ -1,5 +1,21 @@
 #Class YazInterpreter
 
+#Clase para leer el archivo "ManejoArchivo".
+
+def definir_archivo(ruta, acceso):
+    archivo = open(ruta, acceso)
+    return archivo
+
+def lectura_archivo(archivo):
+    contenidoArchivo = archivo.read()
+    return contenidoArchivo
+
+def escribir_archivo(archivo, cadena):
+    archivo.write(cadena)
+
+
+
+
 ##Clase del Interprete: Acepta un comando 'x' con arguementos...
 class Interpreter():
     ##Almacena un string en el interprete y hace una lista de esa string
@@ -42,9 +58,19 @@ class Interpreter():
 ##Crea el interprete de la clase interprete
 interpreter = Interpreter()
 
+manejoArchivo = ManejoArchivo()
+
 ##Ciclo infinito para leer, esto debe de ir en la clase Menu
 while True:
     string = input(">")
     a = interpreter.evaluateString(string)
     print(a)
     
+    
+    archivo = manejoArchivo.definir_archivo("ruta del archivo", "r+")
+    b = manejoArchivo.lectura_archivo(archivo))
+    c = interpreter.evaluateString(b)
+    
+    manejoArchivo.escribir_archivo(archivo, c)
+    
+   
